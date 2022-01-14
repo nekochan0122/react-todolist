@@ -5,3 +5,4 @@
     - Input
     - List
       - Item
+    - Footer
