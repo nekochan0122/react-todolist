@@ -1,18 +1,21 @@
 import { FC, ReactElement, useContext } from 'react'
+import List from '@mui/material/List'
 import { todoCtx } from '../'
 import { ITodoCtx } from '../typings'
 import Item from './Item'
 
-const List: FC = (): ReactElement => {
-  const { state: { todoList } } = useContext(todoCtx) as ITodoCtx
+const MyList: FC = (): ReactElement => {
+  const {
+    state: { todoList },
+  } = useContext(todoCtx) as ITodoCtx
 
   return (
-    <ul>
+    <List disablePadding sx={{ width: '100%' }}>
       {todoList.map(todo => (
         <Item key={todo.id} todo={todo} />
       ))}
-    </ul>
+    </List>
   )
 }
 
-export default List
+export default MyList
