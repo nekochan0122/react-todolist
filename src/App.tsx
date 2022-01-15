@@ -4,7 +4,7 @@ import { TodoList } from './components/TodoList'
 
 const App: FC = (): ReactElement => {
   return (
-    <Container>
+    <Container sx={{ paddingTop: '4rem' }}>
       <TodoList />
     </Container>
   )
