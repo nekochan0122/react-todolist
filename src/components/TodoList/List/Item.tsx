@@ -6,7 +6,8 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Checkbox from '@mui/material/Checkbox'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import DeleteIcon from '@mui/icons-material/Delete'
 import { todoCtx } from '../'
 import { ITodo, ITodoCtx } from '../typings'
 
@@ -24,16 +25,16 @@ const Item = ({ todo }: IProps) => {
   return (
     <>
       <ListItem disablePadding dense>
-        <ListItemButton onClick={toggleHandler}>
-          <ListItemIcon>
+        <ListItemButton aria-label="reverse completed button" onClick={toggleHandler}>
+          <ListItemIcon aria-label="reverse completed icon">
             <Checkbox checked={todo.completed} disableRipple />
           </ListItemIcon>
-          <ListItemText>
+          <ListItemText aria-label="content">
             <Typography>{todo.content}</Typography>
           </ListItemText>
-          <Button variant="outlined" onClick={removeHandler}>
-            刪除
-          </Button>
+          <IconButton aria-label="delete button" color="default" onClick={removeHandler}>
+            <DeleteIcon />
+          </IconButton>
         </ListItemButton>
       </ListItem>
       <Divider />
