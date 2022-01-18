@@ -6,9 +6,9 @@ interface IAction {
 }
 
 // 惰性初始化的好處 : 可以讓初始邏輯函式寫在 reducer 外面，且在 useReducer 初始狀態時復用函式
-function init(initialTodoList: ITodo[]): IState {
+function init(): IState {
   return {
-    todoList: initialTodoList,
+    todoList: [],
     completed: 0,
   }
 }
@@ -59,7 +59,7 @@ function reducer(state: IState, action: IAction): IState {
       }
 
     case ACTION_TYPE.RESET_TODOLIST:
-      return init(payload as ITodo[])
+      return init()
 
     case ACTION_TYPE.UPDATE_COMPLETED:
       return {

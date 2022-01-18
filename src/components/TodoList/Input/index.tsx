@@ -1,4 +1,13 @@
-import { KeyboardEvent, useState, useContext, useRef, forwardRef, SyntheticEvent } from 'react'
+import {
+  useState,
+  useRef,
+  useContext,
+  useCallback,
+  memo,
+  forwardRef,
+  KeyboardEvent,
+  SyntheticEvent,
+} from 'react'
 import { nanoid } from 'nanoid'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
@@ -23,29 +32,29 @@ const Input = () => {
 
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const inputOnKeyUpHandler = (e: KeyboardEvent<HTMLInputElement>): void => {
+  const inputOnKeyUpHandler = useCallback((e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.code === 'Enter') btnHandler()
-  }
+  }, [])
 
-  const handleClick = (alertText: string): void => {
+  const alertHandler = useCallback((alertText: string): void => {
     setAlertText(alertText)
     setOpen(true)
-  }
+  }, [])
 
-  const handleClose = (event?: SyntheticEvent | Event, reason?: string): void => {
+  const handleClose = useCallback((event?: SyntheticEvent | Event, reason?: string): void => {
     if (reason === 'clickaway') return
 
     setOpen(false)
-  }
+  }, [])
 
-  const btnHandler = (): void => {
+  const btnHandler = useCallback((): void => {
     if (!inputRef.current) return console.log('找不到 inputRef DOM 節點')
 
     const todoContent = inputRef.current.value.trim()
 
-    if (todoList.find(todo => todo.content === todoContent)) return handleClick('該代辦事項已存在')
+    if (todoList.find(todo => todo.content === todoContent)) return alertHandler('該代辦事項已存在')
 
-    if (!todoContent.length) return handleClick('請輸入有效內容的代辦事項')
+    if (!todoContent.length) return alertHandler('請輸入有效內容的代辦事項')
 
     addTodo({
       id: nanoid(),
@@ -54,7 +63,7 @@ const Input = () => {
     })
 
     inputRef.current.value = ''
-  }
+  }, [todoList])
 
   return (
     <>

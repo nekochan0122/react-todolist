@@ -23,7 +23,7 @@ export type TAddTodo = (todo: ITodo) => void
 export type TRemoveTodo = (id: string) => void
 export type TToggleTodo = (id: string) => void
 export type TReverseTodoList = (completed: boolean) => void
-export type TResetTodoList = (todoList: ITodo[]) => void
+export type TResetTodoList = () => void
 
 export interface ITodoCtx {
   state: IState

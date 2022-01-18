@@ -31,7 +31,7 @@ interface IReturn {
 
 const useTodoReducer = (): IReturn => {
   // 對於以不同方式修改同一個狀態，且將修改狀態的回調交給子組件，使用 useReducer 會是更好的選擇。
-  const [state, dispatch] = useReducer(reducer, [], init)
+  const [state, dispatch] = useReducer(reducer, null, init)
 
   useEffect(() => {
     const localData = JSON.parse(localStorage.getItem('todolist') ?? '[]')
@@ -79,10 +79,10 @@ const useTodoReducer = (): IReturn => {
     })
   }, [])
 
-  const resetTodoList = useCallback<TResetTodoList>(todoList => {
+  const resetTodoList = useCallback<TResetTodoList>(() => {
     dispatch({
       type: RESET_TODOLIST,
-      payload: todoList,
+      payload: null,
     })
   }, [])
 

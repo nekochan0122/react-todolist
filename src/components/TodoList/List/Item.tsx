@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useCallback } from 'react'
 import Divider from '@mui/material/Divider'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -17,17 +17,21 @@ interface IProps {
 const Item = ({ todo }: IProps) => {
   const { toggleTodo, removeTodo } = useContext(todoCtx) as ITodoCtx
 
+  const toggleHandler = useCallback(() => toggleTodo(todo.id), [])
+
+  const removeHandler = useCallback(() => removeTodo(todo.id), [])
+
   return (
     <>
       <ListItem disablePadding dense>
-        <ListItemButton onClick={() => toggleTodo(todo.id)}>
+        <ListItemButton onClick={toggleHandler}>
           <ListItemIcon>
             <Checkbox checked={todo.completed} disableRipple />
           </ListItemIcon>
           <ListItemText>
             <Typography>{todo.content}</Typography>
           </ListItemText>
-          <Button variant="outlined" onClick={() => removeTodo(todo.id)}>
+          <Button variant="outlined" onClick={removeHandler}>
             刪除
           </Button>
         </ListItemButton>
