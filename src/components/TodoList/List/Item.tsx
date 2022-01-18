@@ -1,4 +1,4 @@
-import { FC, ReactElement, useContext } from 'react'
+import { useContext } from 'react'
 import Divider from '@mui/material/Divider'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -14,7 +14,7 @@ interface IProps {
   todo: ITodo
 }
 
-const Item: FC<IProps> = ({ todo }): ReactElement => {
+const Item = ({ todo }: IProps) => {
   const { toggleTodo, removeTodo } = useContext(todoCtx) as ITodoCtx
 
   return (

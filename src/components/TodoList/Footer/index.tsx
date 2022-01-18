@@ -1,4 +1,4 @@
-import { FC, ReactElement, useContext } from 'react'
+import { useContext } from 'react'
 import Grid from '@mui/material/Grid'
 import Checkbox from '@mui/material/Checkbox'
 import Typography from '@mui/material/Typography'
@@ -6,7 +6,7 @@ import Button from '@mui/material/Button'
 import { todoCtx } from '../'
 import { ITodoCtx } from '../typings'
 
-const Footer: FC = (): ReactElement => {
+const Footer = () => {
   const {
     state: { todoList, completed },
     reverseTodoList,

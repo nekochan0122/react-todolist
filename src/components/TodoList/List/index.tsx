@@ -1,10 +1,10 @@
-import { FC, ReactElement, useContext } from 'react'
+import { useContext } from 'react'
 import List from '@mui/material/List'
 import { todoCtx } from '../'
 import { ITodoCtx } from '../typings'
 import Item from './Item'
 
-const MyList: FC = (): ReactElement => {
+const MyList = () => {
   const {
     state: { todoList },
   } = useContext(todoCtx) as ITodoCtx

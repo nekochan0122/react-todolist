@@ -1,4 +1,4 @@
-import { FC, ReactElement, createContext, version } from 'react'
+import { createContext, version } from 'react'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import useTodoReducer from './useTodoReducer'
@@ -9,7 +9,7 @@ import { ITodoCtx } from './typings'
 
 const todoCtx = createContext<ITodoCtx | null>(null)
 
-const TodoList: FC = (): ReactElement => {
+const TodoList = () => {
   const { state, addTodo, removeTodo, toggleTodo, reverseTodoList, resetTodoList } =
     useTodoReducer()
 

@@ -1,13 +1,4 @@
-import {
-  FC,
-  ReactElement,
-  KeyboardEvent,
-  useState,
-  useContext,
-  useRef,
-  forwardRef,
-  SyntheticEvent,
-} from 'react'
+import { KeyboardEvent, useState, useContext, useRef, forwardRef, SyntheticEvent } from 'react'
 import { nanoid } from 'nanoid'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
@@ -21,7 +12,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) 
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 })
 
-const Input: FC = (): ReactElement => {
+const Input = () => {
   const [alertText, setAlertText] = useState<string>('默認錯誤消息')
   const [open, setOpen] = useState<boolean>(false)
 
